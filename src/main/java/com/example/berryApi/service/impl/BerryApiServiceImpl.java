@@ -17,13 +17,16 @@ public class BerryApiServiceImpl implements BerryApiService {
 
     @Override
     public BerryApi consultarBerry(Integer id) throws IOException {
-        URL url = new URL("https://pokeapi.co/api/v2/berry/"+String.valueOf(id));
-        //URL url = new URL("https://raw.githubusercontent.com/mlopera01/DesarrolloSoftware/main/berry.json");
+        //URL url = new URL("https://pokeapi.co/api/v2/berry/"+String.valueOf(id));
+        //https://pokeapi.co/api/v2/berry/1
+        URL url = new URL("https://raw.githubusercontent.com/mlopera01/DesarrolloSoftware/main/berry.json");
         
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         int responseCode = con.getResponseCode();
         System.out.println("response code " + responseCode);
+        System.out.println("url " + "https://pokeapi.co/api/v2/berry/"+String.valueOf(id));
+        
         if (responseCode == HttpURLConnection.HTTP_OK){
             BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
             String inputLine;
